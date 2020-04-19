@@ -1,0 +1,31 @@
+<div class="jumbotron pb-4">
+  <h1 class="display-4">Heroe<small class="text-muted"> {{heroe.name}}</small></h1>
+  <hr class="my-4">
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-outline-primary" [routerLink]="['heroes']">Regresar</button>
+    <button class="btn btn-outline-success" (click)="newHero(form)">Nuevo héroe</button>
+  </div>
+</div>
+
+
+<div class="col-md-8 offset-md-2">
+  <form (ngSubmit)="saveHeroe()" #form="ngForm">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="heroe.name" required>
+    </div>
+    <div class="form-group">
+      <label for="house">Casa</label>
+      <select class="form-control" id="house" [(ngModel)]="heroe.house" name="house">
+        <option>Seleccione</option>
+        <option value="Marvel">Marvel</option>
+        <option value="DC">DC Comics</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="bio">Bio</label>
+      <textarea class="form-control" id="bio" rows="3" [(ngModel)]="heroe.bio" name="bio"></textarea>
+    </div>
+    <button type="submit" class="btn btn-outline-primary" [disabled]="!form.valid">Guardar</button>
+  </form>
+</div>

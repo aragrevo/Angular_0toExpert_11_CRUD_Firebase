@@ -1,0 +1,32 @@
+<div class="jumbotron pb-4">
+  <h1 class="display-4">Heroes</h1>
+  <hr class="my-4">
+  <div class="text-right">
+    <button class="btn btn-primary" [routerLink]="['/heroe', 'nuevo']">Nuevo héroe</button>
+  </div>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr class="text-center">
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Casa</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let k of heroes | keys; let i=index" class="text-center">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{heroes[k].name}}</td>
+        <td>{{heroes[k].house}}</td>
+        <td class="d-flex justify-content-center">
+          <button class="btn btn-outline-info" [routerLink]="['/heroe', k]">&#9998;</button>
+          <button class="btn btn-outline-danger" (click)="deleteHero(k)">&#10008;</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
